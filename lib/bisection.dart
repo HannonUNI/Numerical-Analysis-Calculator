@@ -21,10 +21,12 @@ class _BisectionPageState extends State<BisectionPage> {
   //
 
   func(x, q, error, bool isRound) {
+    String eq = q.toLowerCase();
+    eq = eq.replaceFirstMapped(RegExp('(\d)x'), (p) => '${p.group(1)}*x');
+    eq = eq.replaceAll('x', x.toString());
+    print('eq -> $eq');
     try {
-      var eq = q.replaceAll('x', x.toString());
       Expression expression = Expression(eq);
-
       double result = expression.eval()!.toDouble();
       int error_num = error.toString().length - 2;
       // print('out -> $result');

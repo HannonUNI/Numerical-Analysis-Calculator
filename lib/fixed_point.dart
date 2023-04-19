@@ -34,21 +34,31 @@ class _FixedPointPageState extends State<FixedPointPage> {
     }
 
     if (i == maxIterations && diff > tolerance) {
-      throw Exception('Method failed after $i iterations.');
+      return output;
+      // throw Exception('Method failed after $i iterations.');
     }
 
     return output;
   }
 
-  func(f, p) {
+  func(q, p) {
+    // x-((x^3+4x^2-10)/(3x^2+8x))
+    String eq = q.toLowerCase();
+
+    print(eq);
+
+    eq = eq.replaceAllMapped(RegExp(r'(\d)x'), (e) => '${e.group(1)}*${p.toString()}');
+
+    eq = eq.replaceAll('x', p.toString());
+    print(eq);
+
     try {
-      var eq = f.replaceAll('x', p.toString());
       Expression expression = Expression(eq);
       double result = expression.eval()!.toDouble();
-
       return result;
     } catch (e) {
-      print('1--> $e');
+      print(eq);
+      throw Exception('$eq \n 1--> $e');
     }
   }
 
