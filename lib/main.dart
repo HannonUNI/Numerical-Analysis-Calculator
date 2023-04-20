@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'bisection.dart';
 import 'fixed_point.dart';
+import 'newton.dart';
 
 void main() {
   runApp(MyApp());
@@ -60,12 +61,19 @@ class _MainState extends State<Main> {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FixedPointPage(),
+                      )),
+                  child: Text("Fixed-Point Iteration"),
+                ),
+                ElevatedButton(
                     onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const FixedPointPage(),
-                        )),
-                    child: Text("Fixed-Point Iteration"))
+                          context,
+                          MaterialPageRoute(builder: (context) => const NewtonPage()),
+                        ),
+                    child: Text("Newton's Method")),
               ],
             ),
           ),
