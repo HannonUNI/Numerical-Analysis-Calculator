@@ -43,5 +43,5 @@ app.*.map.json
 /android/app/src/profile
 /android/app/src/release
 
-./lib/eval_test.dart
-./lib/test.dart
+lib/test.dart
+lib/eval_test.dart
